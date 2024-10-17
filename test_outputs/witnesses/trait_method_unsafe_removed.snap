@@ -1,0 +1,44 @@
+---
+source: src/query.rs
+description: "Lint `trait_method_unsafe_removed` did not have the expected witness output.\nSee https://github.com/obi1kenobi/cargo-semver-checks/blob/main/CONTRIBUTING.md#testing-witnesses\nfor more information."
+expression: "&actual_witnesses"
+---
+[["./test_crates/trait_method_unsafe_removed/"]]
+filename = 'src/lib.rs'
+begin_line = 5
+hint = '''
+unsafe fn witness() {
+    unsafe {
+        trait_method_unsafe_removed::PubTrait::becomes_safe(...);
+    }
+}'''
+
+[["./test_crates/trait_method_unsafe_removed/"]]
+filename = 'src/lib.rs'
+begin_line = 26
+hint = '''
+unsafe fn witness() {
+    unsafe {
+        trait_method_unsafe_removed::TraitBecomesSafe::becomes_safe(...);
+    }
+}'''
+
+[["./test_crates/trait_method_unsafe_removed/"]]
+filename = 'src/lib.rs'
+begin_line = 48
+hint = '''
+unsafe fn witness() {
+    unsafe {
+        trait_method_unsafe_removed::UnsealedTrait::becomes_safe(...);
+    }
+}'''
+
+[["./test_crates/trait_method_unsafe_removed/"]]
+filename = 'src/lib.rs'
+begin_line = 60
+hint = '''
+unsafe fn witness() {
+    unsafe {
+        trait_method_unsafe_removed::TraitWithStdSupertrait::becomes_safe(...);
+    }
+}'''

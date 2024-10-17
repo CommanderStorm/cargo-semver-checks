@@ -58,4 +58,11 @@ SemverQuery(
     },
     error_message: "A publicly-visible trait method is no longer `unsafe`, so implementations must remove the `unsafe` qualifier.",
     per_result_error_template: Some("trait method <{{join \"::\" path}}>::{{method_name}} in file {{span_filename}}:{{span_begin_line}}"),
+    witness: (
+        hint_template: r#"unsafe fn witness() {
+    unsafe {
+        {{join "::" path}}::{{method_name}}(...);
+    }
+}"#,
+    ),
 )
